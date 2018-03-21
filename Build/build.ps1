@@ -208,7 +208,7 @@ task CreateHelp {
     Import-Module -Name "$ModuleRoot\$ProjectName.psd1" -Force
     $splat = @{
         Module         = $ProjectName
-        OutputFolder   = "$ProjectRoot\Docs\en-US"
+        OutputFolder   = "$ProjectRoot\docs\en-US"
         Locale         = "en-US"
         WithModulePage = $true
         Force          = $true
@@ -224,11 +224,11 @@ task BuildHelp Init, Build, {
     }
 
     Import-Module -Name "$OutputPath\$ProjectName.psd1"
-    $languages = Get-ChildItem "$ProjectRoot\Docs" | Select-Object -ExpandProperty Name
+    $languages = Get-ChildItem "$ProjectRoot\docs" | Select-Object -ExpandProperty Name
     foreach ($lang in $languages) {
         Write-Verbose "Generating help for language [[ $lang ]]"
-        Update-MarkdownHelp -Path "$ProjectRoot\Docs\$lang" | Out-Null
-        New-ExternalHelp -Path "$ProjectRoot\Docs\$lang" -OutputPath "$OutputPath\$lang" -Force | Out-Null
+        Update-MarkdownHelp -Path "$ProjectRoot\docs\$lang" | Out-Null
+        New-ExternalHelp -Path "$ProjectRoot\docs\$lang" -OutputPath "$OutputPath\$lang" -Force | Out-Null
     }
 }
 
