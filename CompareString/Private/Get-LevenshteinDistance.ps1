@@ -1,5 +1,6 @@
 function Get-LevenshteinDistance {
     [CmdletBinding()]
+    [OutputType([int])]
     param(
         [Parameter(Mandatory)]
         [AllowEmptyString()]
