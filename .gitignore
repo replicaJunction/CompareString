@@ -1,0 +1,2 @@
+# Ignore the Artifacts folder, which is created when building locally
+Artifacts/*
